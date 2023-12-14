@@ -5,7 +5,7 @@
 
 
              
-            <form (ngSubmit)="create()">
+            <form>
                 <div class="form-group row">
                     <label for="" class="col-form-label col-sm-2">Nombre</label>
                     <div class="col-sm-6">
@@ -32,7 +32,11 @@
 
                 <div class="form-group row" style="margin-top: 10px;">
                     <div class="col-sm-6">
-                        <button class="btn btn-primary" role="button">Crear</button>
+                        <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!cliente.id else elseBlock">Crear</button>
+
+                        <ng-template #elseBlock>
+                            <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
+                        </ng-template>
                     </div>
                 </div>
             </form>
